@@ -1,0 +1,33 @@
+<% layout("../layouts/layout.eta") %>
+
+<h1> Questions </h1>
+<% if (it.questions && it.questions.length > 0) { %>
+<ul>
+    <% it.questions.forEach(quest => { %>
+    <li><a href="/questions/<%= quest.id %>"><%= quest.title %> </a></li>
+    <% }); %>
+</ul>
+<% } else { %>
+    <p>None available.</p>
+<% } %>
+<h2>Add a question!</h2>
+
+<% if (it.validErrors) { %>
+<ul>
+    <% Object.keys(it.validErrors).forEach((attribute) => { %>
+        <% Object.values(it.validErrors[attribute]).forEach((err) => { %>
+            <li><%= err %></li>
+        <% }); %>
+    <% }); %>
+</ul>
+<% } %>
+
+<form method="POST" action="/questions">
+Question title:<br/>
+<input type="text" name="title" value="<%= it.title ? it.title : "" %>"/><br/>
+Description:<br/>
+<textarea name="question_text"><%= it.text ? it.text : "" %></textarea><br/>
+<input type="submit" value="Add question"/>
+</form>
+
+

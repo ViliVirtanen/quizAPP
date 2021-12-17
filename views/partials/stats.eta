@@ -1,0 +1,12 @@
+<% layout("../layouts/layout.eta") %>
+
+<h1> Statistics!</h1>
+<h2> You have answered <%= it.answered.count %> questions </h2>
+<p> <%= it.correct.count %> of those answers were correct!</p> 
+<p> Your questions were answered <%= it.questData.count %> times </p> 
+<h3> Top 5 answers </h3> 
+<ol>
+    <% it.fiveMost.forEach(obj => { %>
+    <li> <%= obj.email %> has answered <%= obj.count %> questions </li>
+    <% }); %>
+</ol>
