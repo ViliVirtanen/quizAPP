@@ -1,6 +1,6 @@
 <% layout("../layouts/layout.eta") %>
 
-<h1> Questions </h1>
+<h1> Your questions </h1>
 <% if (it.questions && it.questions.length > 0) { %>
 <ul>
     <% it.questions.forEach(quest => { %>
@@ -8,7 +8,7 @@
     <% }); %>
 </ul>
 <% } else { %>
-    <p>None available.</p>
+    <p>No questions added yet.</p>
 <% } %>
 <h2>Add a question!</h2>
 
