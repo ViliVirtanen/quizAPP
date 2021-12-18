@@ -45,7 +45,7 @@ const answer = async ({ params, user, response }) => {
   }
 };
 const renderCorrect = ({ render, user }) => {
-  render("partials/answer.eta", { user: user });
+  render("partials/correct.eta", { user: user });
 };
 const renderinCorrect = async ({ params, render, user }) => {
   const correct = await answerService.findCorrect(params.id);
@@ -54,7 +54,7 @@ const renderinCorrect = async ({ params, render, user }) => {
       opt: correct[0].option_text,
       user: user,
     };
-    render("partials/answer.eta", data);
+    render("partials/incorrect.eta", data);
   }
 };
 export { answer, quiz, randomQuiz, renderCorrect, renderinCorrect };

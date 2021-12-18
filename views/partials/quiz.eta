@@ -8,8 +8,9 @@
     <% if (it.opt && it.opt.length > 0) { %>
 <ul>
     <% it.opt.forEach(op => { %>
+    <%= op.option_text %>
     <form method="POST" action="/quiz/<%= it.id %>/options/<%= op.id %>">
-    <input type="submit" value="<%= op.option_text %>"/></form>
+    <input type="submit" value="Choose"/></form>
     <% }); %>
 </ul>
 <% } else { %>

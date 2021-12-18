@@ -28,13 +28,12 @@ const getRandApi = async ({ response }) => {
 const apiAnswer = async ({ request, response }) => {
   const body = request.body({ type: "json" });
   const document = await body.value;
-  if (document.questionId && document.optionId) {
-    const corr = answerService.findCorrect(document.questionId);
-    if (Number(corr[0].id) === Number(document.optionId)) {
-      response.body = { correct: true };
-    } else {
-      response.body = { correct: false };
-    }
+
+  const corr = await answerService.findCorrect(document.questionId);
+  if (Number(corr[0].id) === Number(document.optionId)) {
+    response.body = { correct: true };
+  } else {
+    response.body = { correct: false };
   }
 };
 export { apiAnswer, getRandApi };
