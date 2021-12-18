@@ -6,7 +6,7 @@ import * as registrationController from "./controllers/registrationController.js
 import * as loginController from "./controllers/loginController.js";
 import * as quizController from "./controllers/quizController.js";
 import * as statController from "./controllers/statController.js";
-
+import * as randomApi from "./apis/randomApi.js";
 const router = new Router();
 
 router.get("/", mainController.showMain);
@@ -32,5 +32,6 @@ router.get("/quiz/:id/correct", quizController.renderCorrect);
 router.get("/quiz/:id/incorrect", quizController.renderinCorrect);
 
 router.get("/statistics", statController.showStats);
-
+router.get("/api/questions/random", randomApi.getRandApi);
+router.post("/api/questions/answer", randomApi.apiAnswer);
 export { router };
